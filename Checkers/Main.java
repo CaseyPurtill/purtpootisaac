@@ -9,6 +9,36 @@ class CheckerPiece extends Piece {
      
 }
 
+class RedCheckerPiece extends CheckerPiece {
+
+    public boolean possibleLeft, possibleRight;
+    public boolean possibleJumpLeft, possibleJumpRight;
+    
+    public RedCheckerPiece(int xcord, int ycord) 
+    { 
+        this.xcord = xcord;
+        this.ycord = ycord;
+        this.color = "Red";
+    }
+
+    public void move(String dir) {
+        //Handle the x
+        if(dir == "left" && possibleLeft) {
+                this.xcord -= 1;
+        }
+        else if(dir == "right" && possibleRight) {
+            if(this.xcord < 8) {
+                this.xcord += 1;
+            }
+        }
+
+        //Handle the y 
+        if(this.ycord > 0) {
+            this.ycord -=1;
+        }
+    }
+}
+
 class BlackCheckerPiece extends CheckerPiece {
     
     public BlackCheckerPiece(int xcord, int ycord) 
