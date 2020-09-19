@@ -69,6 +69,23 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("fuck you and your mother");
 
+        CheckerPiece pieces[] = new CheckerPiece[16];
+        for(int i = 0; i < 4; i++) {
+            pieces[i] = new BlackCheckerPiece(i * 2, 0);
+        }
+
+        for(int i = 4; i < 8; i++) {
+            pieces[i] = new BlackCheckerPiece((i - 4) * 2 + 1, 1);
+        }
+
+        for(int i = 8; i < 12; i++) {
+            pieces[i] = new RedCheckerPiece((i - 8) * 2 + 1, 7);
+        }
+
+        for(int i = 12; i < 16; i++) {
+            pieces[i] = new RedCheckerPiece((i - 12) * 2, 8);
+        }
+
         CheckerPiece test = new CheckerPiece();
     }
 }
