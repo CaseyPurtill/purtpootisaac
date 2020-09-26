@@ -23,13 +23,11 @@ class RedCheckerPiece extends CheckerPiece {
 
     public void move(String dir) {
         //Handle the x
-        if(dir == "left" && possibleLeft) {
+        if(dir.equals("left") && possibleLeft) {
                 this.xcord -= 1;
         }
-        else if(dir == "right" && possibleRight) {
-            if(this.xcord < 8) {
+        else if(dir.equals("right") && possibleRight && (this.xcord < 8)) {
                 this.xcord += 1;
-            }
         }
 
         //Handle the y 
@@ -49,15 +47,11 @@ class BlackCheckerPiece extends CheckerPiece {
     }
 
     public void move(String dir) {
-        if(dir == "left") {
-            if(this.xcord > 0) {
+        if(dir.equals("left") && (this.xcord > 0)) {
                 this.xcord -= 1;
-            }
         }
-        else if(dir == "right") {
-            if(this.xcord < 8) {
-                this.xcord += 1;
-            }
+        else if(dir.equals("right") && (this.xcord < 8)) {
+            this.xcord += 1;
         }
         if(this.ycord < 8) {
             this.ycord +=1;
@@ -69,7 +63,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("fuck you and your mother");
 
-        CheckerPiece pieces[] = new CheckerPiece[16];
+        CheckerPiece[] pieces = new CheckerPiece[16];
         for(int i = 0; i < 4; i++) {
             pieces[i] = new BlackCheckerPiece(i * 2, 0);
         }
