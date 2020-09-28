@@ -1,18 +1,46 @@
 
 class Piece{
-    public int xcord;
-    public int ycord;
-    public String color;
+    int xcord;
+    int ycord;
+    String color;
+
+    public void setXCord(int xcord) {
+        this.xcord = xcord;
+    }
+
+    public void setYCord(int ycord) {
+        this.ycord = ycord;
+    } 
+
+    public void setColor(String color) {
+        this.color = color;
+    }
  }
 
 class CheckerPiece extends Piece {
-     
+    boolean possibleLeft;
+    boolean possibleRight;
+    boolean possibleJumpLeft;
+    boolean possibleJumpRight;
+
+    public void setPossibleLeft(boolean possibleLeft) {
+        this.possibleLeft = possibleLeft;
+    }
+
+    public void setPossibleRight(boolean possibleRight) {
+        this.possibleRight = possibleRight;
+    }
+
+    public void setPossibleJumpLeft(boolean possibleJumpLeft) {
+        this.possibleJumpLeft = possibleJumpLeft;
+    }
+
+    public void setPossibleJumpRight(boolean possibleJumpRight) {
+        this.possibleJumpRight = possibleJumpRight;
+    }
 }
 
 class RedCheckerPiece extends CheckerPiece {
-
-    public boolean possibleLeft, possibleRight;
-    public boolean possibleJumpLeft, possibleJumpRight;
     
     public RedCheckerPiece(int xcord, int ycord) 
     { 
@@ -22,20 +50,14 @@ class RedCheckerPiece extends CheckerPiece {
     }
 
     public void move(String dir) {
-        //Handle the x
-        if(dir == "left" && possibleLeft) {
+        if(dir.equals("left") && possibleLeft) {
                 this.xcord -= 1;
         }
-        else if(dir == "right" && possibleRight) {
-            if(this.xcord < 8) {
+        else if(dir.equals("right") && possibleRight) {
                 this.xcord += 1;
-            }
         }
 
-        //Handle the y 
-        if(this.ycord > 0) {
-            this.ycord -=1;
-        }
+        this.ycord -=1;
     }
 }
 
@@ -49,19 +71,14 @@ class BlackCheckerPiece extends CheckerPiece {
     }
 
     public void move(String dir) {
-        if(dir == "left") {
-            if(this.xcord > 0) {
+        if(dir.equals("left") && possibleLeft) {
                 this.xcord -= 1;
-            }
         }
-        else if(dir == "right") {
-            if(this.xcord < 8) {
-                this.xcord += 1;
-            }
+        else if(dir.equals("right") && possibleRight) {
+            this.xcord += 1;
         }
-        if(this.ycord < 8) {
-            this.ycord +=1;
-        }
+
+        this.ycord +=1;
     }
 }
 
@@ -69,7 +86,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("fuck you and your mother");
 
-        CheckerPiece pieces[] = new CheckerPiece[16];
+        CheckerPiece[] pieces = new CheckerPiece[16];
         for(int i = 0; i < 4; i++) {
             pieces[i] = new BlackCheckerPiece(i * 2, 0);
         }
